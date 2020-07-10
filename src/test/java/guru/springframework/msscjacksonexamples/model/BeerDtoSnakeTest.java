@@ -31,7 +31,7 @@ public class BeerDtoSnakeTest extends BaseTest {
     @Test
     public void deserializeSnakeCase() throws IOException {
         // given
-        String jsonString = "{\"id\":\"0dd193de-8768-4895-a5e4-ee136fc1e954\"," +
+        String jsonString = "{\"beerId\":\"0dd193de-8768-4895-a5e4-ee136fc1e954\"," +
                 "\"beer_name\":\"Test beer name\"," +
                 "\"beer_style\":\"Ale\"," +
                 "\"upc\":5,\"price\":9.99," +
@@ -43,6 +43,7 @@ public class BeerDtoSnakeTest extends BaseTest {
         BeerDto dto = objectMapper.readValue(jsonString, BeerDto.class);
 
         // then
+        assertNotNull(dto.getId());
         assertEquals(expectedDeserializedDto.getBeerName(), dto.getBeerName());
         assertEquals(expectedDeserializedDto.getBeerStyle(), dto.getBeerStyle());
         assertEquals(expectedDeserializedDto.getUpc(), dto.getUpc());

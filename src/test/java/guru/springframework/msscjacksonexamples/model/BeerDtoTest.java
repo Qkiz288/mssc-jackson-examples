@@ -2,6 +2,7 @@ package guru.springframework.msscjacksonexamples.model;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@Slf4j
 @JsonTest
 class BeerDtoTest extends BaseTest {
 
@@ -23,13 +25,14 @@ class BeerDtoTest extends BaseTest {
         String jsonString = objectMapper.writeValueAsString(beerDto);
 
         // then
+        log.info(jsonString);
         assertNotNull(jsonString);
     }
 
     @Test
     public void deserializeDto() throws IOException {
         // given
-        String jsonString = "{\"id\":\"d05bc6d2-a337-424a-b4a6-87f2ed38f03d\"," +
+        String jsonString = "{\"beerId\":\"d05bc6d2-a337-424a-b4a6-87f2ed38f03d\"," +
                 "\"beerName\":\"Test beer name\"," +
                 "\"beerStyle\":\"Ale\"," +
                 "\"upc\":5," +
@@ -42,6 +45,7 @@ class BeerDtoTest extends BaseTest {
         BeerDto dto = objectMapper.readValue(jsonString, BeerDto.class);
 
         // then
+        assertNotNull(dto.getId());
         assertEquals(expectedDeserializedDto.getBeerName(), dto.getBeerName());
         assertEquals(expectedDeserializedDto.getBeerStyle(), dto.getBeerStyle());
         assertEquals(expectedDeserializedDto.getUpc(), dto.getUpc());
