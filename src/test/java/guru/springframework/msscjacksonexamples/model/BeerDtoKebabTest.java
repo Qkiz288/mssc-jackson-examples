@@ -16,9 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @JsonTest
 public class BeerDtoKebabTest extends BaseTest {
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
     @Test
     public void serializeKebabCase() throws JsonProcessingException {
         // given
