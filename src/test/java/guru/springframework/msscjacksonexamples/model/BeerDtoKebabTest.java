@@ -35,8 +35,9 @@ public class BeerDtoKebabTest extends BaseTest {
                 "\"beer-name\":\"Test beer name\"," +
                 "\"beer-style\":\"Ale\",\"upc\":5," +
                 "\"price\":9.99," +
-                "\"created-date\":\"2020-07-10T11:41:57.211064+02:00\"," +
-                "\"last-updated-date\":\"2020-07-10T11:41:57.211716+02:00\"}";
+                "\"created-date\":\"2020-07-10T21:01:53+0200\"," +
+                "\"last-updated-date\":\"2020-07-10T11:41:57.211716+02:00\"," +
+                "\"last-ordered-date\":\"20190603\"}";
         BeerDto expectedDeserializedDto = getDto();
 
         // when
@@ -48,6 +49,9 @@ public class BeerDtoKebabTest extends BaseTest {
         assertEquals(expectedDeserializedDto.getBeerStyle(), dto.getBeerStyle());
         assertEquals(expectedDeserializedDto.getUpc(), dto.getUpc());
         assertEquals(expectedDeserializedDto.getPrice(), dto.getPrice());
+        assertNotNull(dto.getCreatedDate());
+        assertNotNull(dto.getLastUpdatedDate());
+        assertNotNull(dto.getLastOrderedDate());
     }
 
 }

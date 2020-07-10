@@ -1,10 +1,8 @@
 package guru.springframework.msscjacksonexamples.model;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 
 import java.io.IOException;
@@ -37,8 +35,9 @@ class BeerDtoTest extends BaseTest {
                 "\"beerStyle\":\"Ale\"," +
                 "\"upc\":5," +
                 "\"price\":9.99," +
-                "\"createdDate\":\"2020-07-10T11:11:32.970871+02:00\"," +
-                "\"lastUpdatedDate\":\"2020-07-10T11:11:32.971879+02:00\"}";
+                "\"createdDate\":\"2020-07-10T21:01:53+0200\"," +
+                "\"lastUpdatedDate\":\"2020-07-10T11:11:32.971879+02:00\"," +
+                "\"lastOrderedDate\":\"20190603\"}";
         BeerDto expectedDeserializedDto = getDto();
 
         // when
@@ -50,6 +49,9 @@ class BeerDtoTest extends BaseTest {
         assertEquals(expectedDeserializedDto.getBeerStyle(), dto.getBeerStyle());
         assertEquals(expectedDeserializedDto.getUpc(), dto.getUpc());
         assertEquals(expectedDeserializedDto.getPrice(), dto.getPrice());
+        assertNotNull(dto.getCreatedDate());
+        assertNotNull(dto.getLastUpdatedDate());
+        assertNotNull(dto.getLastOrderedDate());
     }
 
 }
