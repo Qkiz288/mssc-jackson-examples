@@ -12,15 +12,15 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@ActiveProfiles("snake")
+@ActiveProfiles("kebab")
 @JsonTest
-public class BeerDtoSnakeTest extends BaseTest {
+public class BeerDtoKebabTest extends BaseTest {
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @Test
-    public void serializeSnakeCase() throws JsonProcessingException {
+    public void serializeKebabCase() throws JsonProcessingException {
         // given
         BeerDto beerDto = getDto();
 
@@ -32,14 +32,14 @@ public class BeerDtoSnakeTest extends BaseTest {
     }
 
     @Test
-    public void deserializeSnakeCase() throws IOException {
+    public void deserializeKebabCase() throws IOException {
         // given
-        String jsonString = "{\"id\":\"0dd193de-8768-4895-a5e4-ee136fc1e954\"," +
-                "\"beer_name\":\"Test beer name\"," +
-                "\"beer_style\":\"Ale\"," +
-                "\"upc\":5,\"price\":9.99," +
-                "\"created_date\":\"2020-07-10T11:29:47.65126+02:00\"," +
-                "\"last_updated_date\":\"2020-07-10T11:29:47.652003+02:00\"}";
+        String jsonString = "{\"id\":\"35a3d909-0dd8-4dc3-8a8d-16faf6404245\"," +
+                "\"beer-name\":\"Test beer name\"," +
+                "\"beer-style\":\"Ale\",\"upc\":5," +
+                "\"price\":9.99," +
+                "\"created-date\":\"2020-07-10T11:41:57.211064+02:00\"," +
+                "\"last-updated-date\":\"2020-07-10T11:41:57.211716+02:00\"}";
         BeerDto expectedDeserializedDto = getDto();
 
         // when
